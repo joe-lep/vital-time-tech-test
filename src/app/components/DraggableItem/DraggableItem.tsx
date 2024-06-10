@@ -77,7 +77,7 @@ export default function DraggableItem({ config, index }: DraggableItemProps) {
             alt={config.imageAlt}
           />
           <div className="flex flex-1 flex-col gap-2">
-            <div className="text-lg font-bold">
+            <div className="text-lg font-medium">
               {config.title}
             </div>
             <div className="flex flex-row items-center gap-2 location-text text-md">
