@@ -4,24 +4,14 @@ import CoverFitImage from '@/app/components/CoverFitImage';
 
 export interface DragImageProps {
   config: DraggableItemConfig;
-  isDragging: boolean;
-  dragX: number;
-  dragY: number;
 }
 
 export default function DragImage({
   config,
-  isDragging,
-  dragX,
-  dragY,
 }: DragImageProps) {
   return (
     <div
-      className={clsx(
-        'drag-image-box pointer-events-none fixed z-20 flex -translate-y-1/2 translate-x-4 flex-row items-center gap-4',
-        { hidden: !isDragging }
-      )}
-      style={{ top: dragY, left: dragX }}
+      className="drag-image-box pointer-events-none inline-flex flex-row items-center gap-4"
     >
       <CoverFitImage
         height={32}
@@ -29,6 +19,8 @@ export default function DragImage({
         src={config.imageData}
         alt={config.imageAlt}
         className="rounded"
+        imageStyle={config.imageStyleSmall ?? config.imageStyle}
+        noFill={config.noImageFill}
       />
       <div className="text-lg font-medium">{config.title}</div>
     </div>
