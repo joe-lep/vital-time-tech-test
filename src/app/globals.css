@@ -15,7 +15,7 @@ body {
   max-width: 568px;
 
   /* Ensure room to touch scroll on mobile */
-  margin: 36px;
+  margin: 16px;
 }
 
 .dragging-item-bg {
