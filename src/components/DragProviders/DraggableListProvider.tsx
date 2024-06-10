@@ -1,8 +1,9 @@
 'use client';
 
+import { ReactNode, useCallback, useState } from 'react';
+
 import { DraggableItemConfig } from '@/types';
 import { draggableListContext } from './draggableListContext';
-import { ReactNode, useCallback, useState } from 'react';
 
 export interface DraggableListProviderProps {
   config: Array<DraggableItemConfig>;
@@ -48,6 +49,7 @@ export function DraggableListProvider({
         }
 
         if (targetIndex > currentIndex + 1) {
+          // if the index of the drop zone is below the item being dragged, the target index is for the slot above it
           const trueTargetIndex = targetIndex - 1;
 
           Object.keys(prevListOrder).forEach((itemKey) => {

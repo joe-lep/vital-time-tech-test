@@ -1,12 +1,13 @@
 'use client';
 
+import { ReactNode, useCallback, useState } from 'react';
 import {
   DndContext,
   DragEndEvent,
   DragOverlay,
   DragStartEvent,
 } from '@dnd-kit/core';
-import { ReactNode, useCallback, useState } from 'react';
+
 import { useReorderItem } from './useReorderItem';
 import { DraggableItemConfig } from '@/types';
 import OverlayItem from '@/components/OverlayItem';
@@ -21,6 +22,7 @@ export default function DragProvidersInner({
   const [activeConfig, setActiveConfig] = useState<DraggableItemConfig | null>(
     null
   );
+
   const reorderItem = useReorderItem();
 
   const handleDragStart = useCallback(

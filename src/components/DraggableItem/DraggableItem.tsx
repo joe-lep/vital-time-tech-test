@@ -1,10 +1,11 @@
 'use client';
 
 import clsx from 'clsx';
-import CoverFitImage from '@/components/CoverFitImage';
-import LocationIcon from './LocationIcon';
 import { useDraggable } from '@dnd-kit/core';
+
+import CoverFitImage from '@/components/CoverFitImage';
 import { DraggableItemConfig } from '@/types';
+import LocationIcon from './LocationIcon';
 
 export interface DraggableItemProps {
   config: DraggableItemConfig;

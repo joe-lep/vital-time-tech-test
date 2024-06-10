@@ -1,4 +1,4 @@
-interface LocationIconProps {
+export interface LocationIconProps {
   width?: number;
   height?: number;
 }
