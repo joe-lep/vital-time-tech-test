@@ -1,7 +1,7 @@
-import { DraggableListProvider } from "@/contexts/draggable-list-context";
-import { DraggableItemListProps } from "./propsDefinition";
-import DraggableItemListInner from "./DraggableItemListInner";
-import { DraggingIndexProvider } from "@/contexts/dragging-index-context";
+import { DraggableListProvider } from '@/contexts/draggable-list-context';
+import { DraggableItemListProps } from './propsDefinition';
+import DraggableItemListInner from './DraggableItemListInner';
+import { DraggingIndexProvider } from '@/contexts/dragging-index-context';
 
 export default function DraggableItemList({ config }: DraggableItemListProps) {
   return (

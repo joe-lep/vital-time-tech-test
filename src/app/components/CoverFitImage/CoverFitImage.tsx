@@ -1,14 +1,19 @@
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
-import Image from "next/image";
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import Image from 'next/image';
 
 export interface CoverFitImageProps {
   width: number;
   height: number;
   src: string | StaticImport;
-  alt: string; 
+  alt: string;
 }
 
-export default function CoverFitImage({ width, height, src, alt }: CoverFitImageProps) {
+export default function CoverFitImage({
+  width,
+  height,
+  src,
+  alt,
+}: CoverFitImageProps) {
   return (
     <div style={{ height, width, position: 'relative' }}>
       <Image

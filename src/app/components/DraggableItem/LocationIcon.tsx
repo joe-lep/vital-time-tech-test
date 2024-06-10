@@ -1,9 +1,12 @@
 interface LocationIconProps {
   width?: number;
-  height?: number
+  height?: number;
 }
 
-export default function LocationIcon({ width = 16, height = 16}: LocationIconProps) {
+export default function LocationIcon({
+  width = 16,
+  height = 16,
+}: LocationIconProps) {
   return (
     <svg width={width} height={height} viewBox="0 0 16 16" strokeWidth={1.5}>
       <g fill="none" stroke="currentColor">

@@ -1,4 +1,4 @@
-import { DraggableItemConfig } from "@/app/types";
+import { DraggableItemConfig } from '@/app/types';
 import ScotlandIslandBeachPhoto from '/public/scotland-island-photo.jpg';
 import CharlesGrandPhoto from '/public/charles-grand-photo.jpg';
 import BridgeClimbPhoto from '/public/bridge-climb-photo.png';

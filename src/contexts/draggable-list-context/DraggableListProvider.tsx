@@ -1,13 +1,13 @@
 'use client';
 
-import { DraggableItemConfig } from "@/app/types";
-import { draggableListContext } from "./draggableListContext";
-import { ReactNode, useCallback, useState } from "react";
+import { DraggableItemConfig } from '@/app/types';
+import { draggableListContext } from './draggableListContext';
+import { ReactNode, useCallback, useState } from 'react';
 
 export interface DraggableListProviderProps {
   config: Array<DraggableItemConfig>;
   children: ReactNode;
-};
+}
 
 function getDefaultListOrder(config: Array<DraggableItemConfig>) {
   const listOrder: Record<string, number> = {};
@@ -19,53 +19,57 @@ function getDefaultListOrder(config: Array<DraggableItemConfig>) {
   return listOrder;
 }
 
-export function DraggableListProvider({ config, children }: DraggableListProviderProps) {
+export function DraggableListProvider({
+  config,
+  children,
+}: DraggableListProviderProps) {
   const [listOrder, setListOrder] = useState(getDefaultListOrder(config));
 
-  const reorderItem = useCallback((itemId: string, targetIndex: number) => {
-    setListOrder((prevListOrder) => {
-      const currentIndex = prevListOrder[itemId];
-      const newListOrder: Record<string, number> = {};
+  const reorderItem = useCallback(
+    (itemId: string, targetIndex: number) => {
+      setListOrder((prevListOrder) => {
+        const currentIndex = prevListOrder[itemId];
+        const newListOrder: Record<string, number> = {};
 
-      if (targetIndex < currentIndex) {
-        Object.keys(prevListOrder).forEach((itemKey) => {
-          const itemIndex = prevListOrder[itemKey];
+        if (targetIndex < currentIndex) {
+          Object.keys(prevListOrder).forEach((itemKey) => {
+            const itemIndex = prevListOrder[itemKey];
 
-          if (itemIndex >= targetIndex && itemIndex < currentIndex) {
-            newListOrder[itemKey] = itemIndex + 1;
-          }
-          else {
-            newListOrder[itemKey] = itemIndex;
-          }
-        })
+            if (itemIndex >= targetIndex && itemIndex < currentIndex) {
+              newListOrder[itemKey] = itemIndex + 1;
+            } else {
+              newListOrder[itemKey] = itemIndex;
+            }
+          });
 
-        newListOrder[itemId] = targetIndex;
+          newListOrder[itemId] = targetIndex;
 
-        return newListOrder;
-      }
+          return newListOrder;
+        }
 
-      if (targetIndex > currentIndex + 1) {
-        const trueTargetIndex = targetIndex - 1;
+        if (targetIndex > currentIndex + 1) {
+          const trueTargetIndex = targetIndex - 1;
 
-        Object.keys(prevListOrder).forEach((itemKey) => {
-          const itemIndex = prevListOrder[itemKey];
+          Object.keys(prevListOrder).forEach((itemKey) => {
+            const itemIndex = prevListOrder[itemKey];
 
-          if (itemIndex > currentIndex && itemIndex <= trueTargetIndex) {
-            newListOrder[itemKey] = itemIndex - 1;
-          }
-          else {
-            newListOrder[itemKey] = itemIndex;
-          }
-        });
+            if (itemIndex > currentIndex && itemIndex <= trueTargetIndex) {
+              newListOrder[itemKey] = itemIndex - 1;
+            } else {
+              newListOrder[itemKey] = itemIndex;
+            }
+          });
 
-        newListOrder[itemId] = trueTargetIndex;
+          newListOrder[itemId] = trueTargetIndex;
 
-        return newListOrder;
-      }
+          return newListOrder;
+        }
 
-      return prevListOrder;
-    });
-  }, [setListOrder]);
+        return prevListOrder;
+      });
+    },
+    [setListOrder]
+  );
 
   return (
     <draggableListContext.Provider value={{ listOrder, reorderItem }}>
