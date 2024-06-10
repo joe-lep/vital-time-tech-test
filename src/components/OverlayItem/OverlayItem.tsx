@@ -1,6 +1,5 @@
-import { DraggableItemConfig } from '@/app/types';
-import clsx from 'clsx';
-import CoverFitImage from '@/app/components/CoverFitImage';
+import { DraggableItemConfig } from '@/types';
+import CoverFitImage from '@/components/CoverFitImage';
 
 export interface DragImageProps {
   config: DraggableItemConfig;

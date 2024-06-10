@@ -1,8 +1,8 @@
 'use client';
 
+import { useMemo } from 'react';
 import { useDroppable } from '@dnd-kit/core';
 import clsx from 'clsx';
-import { useMemo } from 'react';
 
 export interface DragTargetProps {
   index: number;

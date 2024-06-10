@@ -1,10 +1,11 @@
 'use client';
 
-import { DraggableItemConfig } from '@/app/types';
-import DraggableItem from '../DraggableItem/DraggableItem';
 import { Fragment, useCallback, useMemo } from 'react';
-import { useListOrder } from '@/app/components/DragProviders';
-import DragTarget from '../DragTarget';
+
+import { DraggableItemConfig } from '@/types';
+import DraggableItem from '@/components/DraggableItem';
+import { useListOrder } from '@/components/DragProviders';
+import DragTarget from '@/components/DragTarget';
 import { DraggableItemListProps } from './propsDefinition';
 
 export default function DraggableItemListInner({

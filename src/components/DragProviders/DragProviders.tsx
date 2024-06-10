@@ -1,5 +1,6 @@
-import { DraggableItemConfig } from '@/app/types';
 import { ReactNode } from 'react';
+
+import { DraggableItemConfig } from '@/types';
 import { DraggableListProvider } from './DraggableListProvider';
 import DragProvidersInner from './DragProvidersInner';
 
@@ -8,10 +9,7 @@ export interface DragProvidersProps {
   children: ReactNode;
 }
 
-export default function DragProviders({
-  config,
-  children,
-}: DragProvidersProps) {
+export function DragProviders({ config, children }: DragProvidersProps) {
   return (
     <DraggableListProvider config={config}>
       <DragProvidersInner>{children}</DragProvidersInner>

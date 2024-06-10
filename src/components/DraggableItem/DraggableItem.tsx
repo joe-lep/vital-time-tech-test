@@ -1,17 +1,16 @@
 'use client';
 
-import { DraggableItemConfig } from '@/app/types';
 import clsx from 'clsx';
-import CoverFitImage from '@/app/components/CoverFitImage';
-import LocationIcon from './LocationIcon';
 import { useDraggable } from '@dnd-kit/core';
+
+import CoverFitImage from '@/components/CoverFitImage';
+import { DraggableItemConfig } from '@/types';
+import LocationIcon from './LocationIcon';
 
 export interface DraggableItemProps {
   config: DraggableItemConfig;
   index: number;
 }
-
-const OFF_SCREEN = -99999;
 
 export default function DraggableItem({ config, index }: DraggableItemProps) {
   const { setNodeRef, listeners, isDragging } = useDraggable({
@@ -24,7 +23,7 @@ export default function DraggableItem({ config, index }: DraggableItemProps) {
 
   return (
     <div
-      className={clsx('touch-none px-10 py-5', {
+      className={clsx('cursor-grab touch-none px-10 py-5', {
         'dragging-item-bg': isDragging,
       })}
       ref={setNodeRef}

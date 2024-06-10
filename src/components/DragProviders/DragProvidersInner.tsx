@@ -1,15 +1,16 @@
 'use client';
 
+import { ReactNode, useCallback, useState } from 'react';
 import {
   DndContext,
   DragEndEvent,
   DragOverlay,
   DragStartEvent,
 } from '@dnd-kit/core';
-import { ReactNode, useCallback, useState } from 'react';
+
 import { useReorderItem } from './useReorderItem';
-import { DraggableItemConfig } from '@/app/types';
-import OverlayItem from '../OverlayItem';
+import { DraggableItemConfig } from '@/types';
+import OverlayItem from '@/components/OverlayItem';
 
 export interface DragProvidersInnerProps {
   children: ReactNode;
@@ -21,6 +22,7 @@ export default function DragProvidersInner({
   const [activeConfig, setActiveConfig] = useState<DraggableItemConfig | null>(
     null
   );
+
   const reorderItem = useReorderItem();
 
   const handleDragStart = useCallback(
@@ -61,7 +63,7 @@ export default function DragProvidersInner({
       onDragCancel={handleDragCancel}
     >
       {children}
-      <DragOverlay className="flex items-center justify-center">
+      <DragOverlay className="flex cursor-grabbing items-center justify-center">
         {activeConfig != null && <OverlayItem config={activeConfig} />}
       </DragOverlay>
     </DndContext>

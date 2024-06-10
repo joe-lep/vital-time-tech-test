@@ -1,7 +1,7 @@
-import clsx from 'clsx';
+import { CSSProperties } from 'react';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
-import { CSSProperties } from 'react';
+import clsx from 'clsx';
 
 export interface CoverFitImageProps {
   width: number;
