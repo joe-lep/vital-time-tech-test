@@ -1,6 +1,6 @@
 'use client';
 
-import { DraggableItemConfig } from '@/app/types';
+import { DraggableItemConfig } from '@/types';
 import { draggableListContext } from './draggableListContext';
 import { ReactNode, useCallback, useState } from 'react';
 
