@@ -23,7 +23,13 @@ export default function DraggableItem({ config, index }: DraggableItemProps) {
   });
 
   return (
-    <div className={clsx('px-10 py-5 touch-none', { 'dragging-item-bg': isDragging })} ref={setNodeRef} {...listeners}>
+    <div
+      className={clsx('touch-none px-10 py-5', {
+        'dragging-item-bg': isDragging,
+      })}
+      ref={setNodeRef}
+      {...listeners}
+    >
       <div
         className={clsx('flex flex-row items-center gap-6', {
           'opacity-30': isDragging,

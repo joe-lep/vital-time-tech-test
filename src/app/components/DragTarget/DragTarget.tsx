@@ -1,6 +1,5 @@
 'use client';
 
-
 import { useDroppable } from '@dnd-kit/core';
 import clsx from 'clsx';
 import { useMemo } from 'react';
@@ -21,7 +20,7 @@ export default function DragTarget({ index }: DragTargetProps) {
 
   const isCurrentDraggingItemNotAdjacent = useMemo(() => {
     if (typeof activeIndex !== 'number') {
-      return false
+      return false;
     }
     return !(activeIndex === index || activeIndex === index - 1);
   }, [activeIndex, index]);

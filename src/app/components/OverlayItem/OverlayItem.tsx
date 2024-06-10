@@ -6,13 +6,9 @@ export interface DragImageProps {
   config: DraggableItemConfig;
 }
 
-export default function DragImage({
-  config,
-}: DragImageProps) {
+export default function DragImage({ config }: DragImageProps) {
   return (
-    <div
-      className="drag-image-box pointer-events-none inline-flex flex-row items-center gap-4"
-    >
+    <div className="drag-image-box pointer-events-none inline-flex flex-row items-center gap-4">
       <CoverFitImage
         height={32}
         width={32}

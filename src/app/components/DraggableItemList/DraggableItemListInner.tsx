@@ -3,9 +3,7 @@
 import { DraggableItemConfig } from '@/app/types';
 import DraggableItem from '../DraggableItem/DraggableItem';
 import { Fragment, useCallback, useMemo } from 'react';
-import {
-  useListOrder,
-} from '@/app/components/DragProviders';
+import { useListOrder } from '@/app/components/DragProviders';
 import DragTarget from '../DragTarget';
 import { DraggableItemListProps } from './propsDefinition';
 
