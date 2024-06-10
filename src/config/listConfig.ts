@@ -16,7 +16,7 @@ export const draggableItemsList: Array<DraggableItemConfig> = [
   },
   {
     id: 'charles-grand',
-    title: 'Charled Grand',
+    title: 'The Charles Grand Brasserie & Bar',
     location: 'Lorem ipsum, Dolor',
     imageData: CharlesGrandPhoto,
     imageAlt: 'A rocky beach',
