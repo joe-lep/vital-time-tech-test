@@ -61,7 +61,7 @@ export default function DragProvidersInner({
       onDragCancel={handleDragCancel}
     >
       {children}
-      <DragOverlay className="flex items-center justify-center">
+      <DragOverlay className="flex items-center justify-center cursor-grabbing">
         {activeConfig != null && <OverlayItem config={activeConfig} />}
       </DragOverlay>
     </DndContext>

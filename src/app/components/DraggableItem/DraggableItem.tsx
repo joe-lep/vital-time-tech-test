@@ -24,7 +24,7 @@ export default function DraggableItem({ config, index }: DraggableItemProps) {
 
   return (
     <div
-      className={clsx('touch-none px-10 py-5', {
+      className={clsx('touch-none cursor-grab px-10 py-5', {
         'dragging-item-bg': isDragging,
       })}
       ref={setNodeRef}
