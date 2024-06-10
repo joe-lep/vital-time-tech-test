@@ -2,7 +2,7 @@
 
 import { DraggableItemConfig } from '@/app/types';
 import clsx from 'clsx';
-import CoverFitImage from '@/app/components/CoverFitImage';
+import CoverFitImage from '@/components/CoverFitImage';
 import LocationIcon from './LocationIcon';
 import { useDraggable } from '@dnd-kit/core';
 
