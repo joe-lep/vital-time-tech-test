@@ -62,26 +62,28 @@ export default function DraggableItem({ config, index }: DraggableItemProps) {
 
   return (
     <>
-      <div
-        className="flex flex-row items-center gap-8"
-        draggable
-        onDragStart={handleDragStart}
-        onDrag={handleDrag}
-        onDragEnd={handleDragEnd}
-      >
-        <CoverFitImage
-          height={96}
-          width={96}
-          src={config.imageData}
-          alt={config.imageAlt}
-        />
-        <div className="flex flex-1 flex-col gap-2">
-          <div>{config.title}</div>
-          <div className="flex flex-row items-center gap-2">
-            <LocationIcon />
-            {config.location}
+      <div className={clsx({ 'bg-gray-100': isDragging })}>
+        <div
+          className={clsx("flex flex-row items-center gap-8", { 'opacity-30': isDragging })}
+          draggable
+          onDragStart={handleDragStart}
+          onDrag={handleDrag}
+          onDragEnd={handleDragEnd}
+        >
+          <CoverFitImage
+            height={96}
+            width={96}
+            src={config.imageData}
+            alt={config.imageAlt}
+          />
+          <div className="flex flex-1 flex-col gap-2">
+            <div>{config.title}</div>
+            <div className="flex flex-row items-center gap-2">
+              <LocationIcon />
+              {config.location}
+            </div>
           </div>
-        </div>
+      </div>
       </div>
 
       {/* Custom drag image */}
