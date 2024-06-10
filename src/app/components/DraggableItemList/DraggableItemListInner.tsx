@@ -43,7 +43,7 @@ export default function DraggableItemListInner({
   );
 
   return (
-    <div style={{ width: 568 }} className="flex flex-col">
+    <div className="draggable-list-box flex flex-col">
       {renderedItemList}
       <DragTarget index={config.length} />
     </div>

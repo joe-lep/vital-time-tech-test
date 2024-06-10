@@ -1,11 +1,16 @@
+import clsx from 'clsx';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
+import { CSSProperties } from 'react';
 
 export interface CoverFitImageProps {
   width: number;
   height: number;
   src: string | StaticImport;
   alt: string;
+  className?: string;
+  imageStyle?: CSSProperties;
+  noFill?: boolean;
 }
 
 export default function CoverFitImage({
@@ -13,15 +18,21 @@ export default function CoverFitImage({
   height,
   src,
   alt,
+  className,
+  imageStyle,
+  noFill,
 }: CoverFitImageProps) {
   return (
-    <div style={{ height, width, position: 'relative' }}>
+    <div
+      className={clsx('relative overflow-hidden', className)}
+      style={{ height, width }}
+    >
       <Image
         src={src}
         alt={alt}
-        fill
+        fill={!noFill}
         draggable={false}
-        style={{ objectFit: 'cover' }}
+        style={imageStyle ?? { objectFit: 'cover' }}
       />
     </div>
   );

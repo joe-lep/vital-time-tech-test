@@ -18,6 +18,13 @@ export default function DragTarget({ index }: DragTargetProps) {
     return currentDraggingIndex === index || currentDraggingIndex === index - 1;
   }, [currentDraggingIndex, index]);
 
+  const isDraggingOccurring = useMemo(() => {
+    return currentDraggingIndex >= 0;
+  }, [currentDraggingIndex]);
+
+  const shouldShowDroppableArea =
+    isDraggingOccurring && !isCurrentDraggingItemAdjacent;
+
   const handleDragEnter = useCallback(
     (event: DragEvent<HTMLDivElement>) => {
       event.preventDefault();
@@ -71,16 +78,19 @@ export default function DragTarget({ index }: DragTargetProps) {
 
   return (
     <div
-      className="flex h-20 flex-col justify-center"
-      onDragEnter={handleDragEnter}
-      onDragLeave={handleDragLeave}
-      onDragOver={handleDragOver}
-      onDrop={handleDrop}
+      className={clsx('relative h-1', {
+        'drop-boundry-dragover-bg': isDraggingOver,
+      })}
     >
       <div
-        className={clsx('pointer-events-none h-1 bg-blue-100', {
-          hidden: !isDraggingOver,
-        })}
+        className={clsx(
+          'absolute inset-x-0 top-1/2 z-20 h-20 -translate-y-1/2',
+          { hidden: !shouldShowDroppableArea }
+        )}
+        onDragEnter={handleDragEnter}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
       />
     </div>
   );
