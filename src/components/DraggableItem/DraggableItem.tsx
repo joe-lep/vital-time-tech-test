@@ -11,8 +11,6 @@ export interface DraggableItemProps {
   index: number;
 }
 
-const OFF_SCREEN = -99999;
-
 export default function DraggableItem({ config, index }: DraggableItemProps) {
   const { setNodeRef, listeners, isDragging } = useDraggable({
     id: config.id,
