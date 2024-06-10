@@ -9,7 +9,7 @@ import {
 import { ReactNode, useCallback, useState } from 'react';
 import { useReorderItem } from './useReorderItem';
 import { DraggableItemConfig } from '@/types';
-import OverlayItem from '../OverlayItem';
+import OverlayItem from '@/components/OverlayItem';
 
 export interface DragProvidersInnerProps {
   children: ReactNode;

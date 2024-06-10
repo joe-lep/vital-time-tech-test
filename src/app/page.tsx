@@ -1,4 +1,4 @@
-import DraggableItemList from '../components/DraggableItemList';
+import DraggableItemList from '@/components/DraggableItemList';
 import { draggableItemsList } from '@/config/listConfig';
 
 export default function Home() {

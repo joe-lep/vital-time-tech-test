@@ -8,10 +8,7 @@ export interface DragProvidersProps {
   children: ReactNode;
 }
 
-export default function DragProviders({
-  config,
-  children,
-}: DragProvidersProps) {
+export function DragProviders({ config, children }: DragProvidersProps) {
   return (
     <DraggableListProvider config={config}>
       <DragProvidersInner>{children}</DragProvidersInner>
