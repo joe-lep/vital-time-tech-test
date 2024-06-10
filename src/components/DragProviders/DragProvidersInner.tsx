@@ -8,7 +8,7 @@ import {
 } from '@dnd-kit/core';
 import { ReactNode, useCallback, useState } from 'react';
 import { useReorderItem } from './useReorderItem';
-import { DraggableItemConfig } from '@/app/types';
+import { DraggableItemConfig } from '@/types';
 import OverlayItem from '../OverlayItem';
 
 export interface DragProvidersInnerProps {
@@ -61,7 +61,7 @@ export default function DragProvidersInner({
       onDragCancel={handleDragCancel}
     >
       {children}
-      <DragOverlay className="flex items-center justify-center cursor-grabbing">
+      <DragOverlay className="flex cursor-grabbing items-center justify-center">
         {activeConfig != null && <OverlayItem config={activeConfig} />}
       </DragOverlay>
     </DndContext>

@@ -1,10 +1,10 @@
 'use client';
 
-import { DraggableItemConfig } from '@/app/types';
 import clsx from 'clsx';
 import CoverFitImage from '@/components/CoverFitImage';
 import LocationIcon from './LocationIcon';
 import { useDraggable } from '@dnd-kit/core';
+import { DraggableItemConfig } from '@/types';
 
 export interface DraggableItemProps {
   config: DraggableItemConfig;
@@ -24,7 +24,7 @@ export default function DraggableItem({ config, index }: DraggableItemProps) {
 
   return (
     <div
-      className={clsx('touch-none cursor-grab px-10 py-5', {
+      className={clsx('cursor-grab touch-none px-10 py-5', {
         'dragging-item-bg': isDragging,
       })}
       ref={setNodeRef}

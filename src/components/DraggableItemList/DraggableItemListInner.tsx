@@ -1,6 +1,6 @@
 'use client';
 
-import { DraggableItemConfig } from '@/app/types';
+import { DraggableItemConfig } from '@/types';
 import DraggableItem from '../DraggableItem/DraggableItem';
 import { Fragment, useCallback, useMemo } from 'react';
 import { useListOrder } from '@/components/DragProviders';
