@@ -12,8 +12,6 @@ export default function DraggableItemListInner({
 }: DraggableItemListProps) {
   const listOrder = useListOrder();
 
-  console.log(listOrder);
-
   const compareFunction = useCallback(
     (a: DraggableItemConfig, b: DraggableItemConfig) => {
       return (listOrder[a.id] ?? 0) - (listOrder[b.id] ?? 0);

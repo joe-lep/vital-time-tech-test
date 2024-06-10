@@ -18,7 +18,6 @@ export interface DragProvidersInnerProps {
 export default function DragProvidersInner({
   children,
 }: DragProvidersInnerProps) {
-  const [draggingIndex, setDraggingIndex] = useState<number | null>(null);
   const [activeConfig, setActiveConfig] = useState<DraggableItemConfig | null>(
     null
   );
@@ -26,14 +25,7 @@ export default function DragProvidersInner({
 
   const handleDragStart = useCallback(
     (event: DragStartEvent) => {
-      const index = event.active.data.current?.index;
       const config = event.active.data.current?.config;
-
-      if (typeof index === 'number') {
-        setDraggingIndex(index);
-      } else {
-        setDraggingIndex(null);
-      }
 
       if (config) {
         setActiveConfig(config);
@@ -41,7 +33,7 @@ export default function DragProvidersInner({
         setActiveConfig(null);
       }
     },
-    [setDraggingIndex]
+    [setActiveConfig]
   );
 
   const handleDragEnd = useCallback(
@@ -49,20 +41,17 @@ export default function DragProvidersInner({
       const itemId = event.active.data.current?.config?.id;
       const targetIndex = event.over?.data.current?.index;
 
-      console.log(event);
-      console.log(itemId, targetIndex);
-
       if (typeof itemId === 'string' && typeof targetIndex === 'number') {
         reorderItem(itemId, targetIndex);
       }
 
-      setDraggingIndex(null);
+      setActiveConfig(null);
     },
-    [reorderItem, setDraggingIndex]
+    [reorderItem, setActiveConfig]
   );
 
   const handleDragCancel = useCallback(() => {
-    setDraggingIndex(null);
+    setActiveConfig(null);
   }, []);
 
   return (
