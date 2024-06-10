@@ -76,7 +76,7 @@ export default function DragTarget({ index }: DragTargetProps) {
   );
 
   return (
-    <div className={clsx("h-1 relative", { 'bg-sky-500': isDraggingOver })}>
+    <div className={clsx("h-1 relative", { 'drop-boundry-dragover-bg': isDraggingOver })}>
       <div
         className={clsx("h-20 absolute top-1/2 inset-x-0 z-20 -translate-y-1/2", { hidden: !shouldShowDroppableArea })}
         onDragEnter={handleDragEnter}

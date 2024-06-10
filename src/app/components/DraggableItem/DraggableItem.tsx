@@ -62,7 +62,7 @@ export default function DraggableItem({ config, index }: DraggableItemProps) {
 
   return (
     <>
-      <div className={clsx({ 'bg-gray-100': isDragging })}>
+      <div className={clsx({ 'dragging-item-bg': isDragging })}>
         <div
           className={clsx("flex flex-row items-center gap-8", { 'opacity-30': isDragging })}
           draggable
@@ -77,8 +77,10 @@ export default function DraggableItem({ config, index }: DraggableItemProps) {
             alt={config.imageAlt}
           />
           <div className="flex flex-1 flex-col gap-2">
-            <div>{config.title}</div>
-            <div className="flex flex-row items-center gap-2">
+            <div className="text-lg font-bold">
+              {config.title}
+            </div>
+            <div className="flex flex-row items-center gap-2 location-text text-md">
               <LocationIcon />
               {config.location}
             </div>

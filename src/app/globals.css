@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    color: #292B36;
+}
+
+.dragging-item-bg {
+    background: #F4F5F6;
+}
+
+.location-text {
+    color: #A8A9AE;
+}
+
+.drop-boundry-dragover-bg {
+    background: #1E9BF0;
+}
