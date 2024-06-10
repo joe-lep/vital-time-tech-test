@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image';
+import { CSSProperties } from 'react';
 
 export type DraggableItemConfig = {
   id: string;
@@ -6,6 +7,8 @@ export type DraggableItemConfig = {
   location: string;
   imageAlt: string;
   imageData: StaticImageData;
+  imageStyle?: CSSProperties;
+  noImageFill?: boolean;
 };
 
 export type DraggableListContext = {

@@ -6,6 +6,7 @@ import { DragEvent, useCallback, useRef, useState } from 'react';
 import CoverFitImage from '@/app/components/CoverFitImage';
 import { useDraggingIndexSetters } from '@/contexts/dragging-index-context';
 import LocationIcon from './LocationIcon';
+import DragImage from './DragImage';
 
 export interface DraggableItemProps {
   config: DraggableItemConfig;
@@ -62,9 +63,11 @@ export default function DraggableItem({ config, index }: DraggableItemProps) {
 
   return (
     <>
-      <div className={clsx({ 'dragging-item-bg': isDragging })}>
+      <div className={clsx('px-10 py-5', { 'dragging-item-bg': isDragging })}>
         <div
-          className={clsx("flex flex-row items-center gap-8", { 'opacity-30': isDragging })}
+          className={clsx('flex flex-row items-center gap-6', {
+            'opacity-30': isDragging,
+          })}
           draggable
           onDragStart={handleDragStart}
           onDrag={handleDrag}
@@ -75,35 +78,27 @@ export default function DraggableItem({ config, index }: DraggableItemProps) {
             width={96}
             src={config.imageData}
             alt={config.imageAlt}
+            className="rounded-xl"
+            imageStyle={config.imageStyle}
+            noFill={config.noImageFill}
           />
-          <div className="flex flex-1 flex-col gap-2">
-            <div className="text-lg font-medium">
-              {config.title}
-            </div>
-            <div className="flex flex-row items-center gap-2 location-text text-md">
+          <div className="flex flex-1 flex-col gap-1">
+            <div className="text-lg font-medium">{config.title}</div>
+            <div className="location-text text-md flex flex-row items-center gap-1">
               <LocationIcon />
               {config.location}
             </div>
           </div>
-      </div>
+        </div>
       </div>
 
       {/* Custom drag image */}
-      <div
-        className={clsx(
-          'pointer-events-none fixed z-20 flex flex-row gap-2 shadow-lg',
-          { hidden: !isDragging }
-        )}
-        style={{ top: dragY, left: dragX }}
-      >
-        <CoverFitImage
-          height={32}
-          width={32}
-          src={config.imageData}
-          alt={config.imageAlt}
-        />
-        <div>{config.title}</div>
-      </div>
+      <DragImage
+        config={config}
+        isDragging={isDragging}
+        dragX={dragX}
+        dragY={dragY}
+      />
 
       {/* Use this to hide default drag image */}
       <div className="hidden" ref={emptyDivRef} />

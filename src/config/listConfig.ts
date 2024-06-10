@@ -27,6 +27,14 @@ export const draggableItemsList: Array<DraggableItemConfig> = [
     location: 'Dolor, Sit amet',
     imageData: BridgeClimbPhoto,
     imageAlt: 'A man jumping into water',
+    imageStyle: {
+      position: 'absolute',
+      width: '223.3px',
+      height: '168.1px',
+      objectFit: 'cover',
+      top: '-9.6px',
+    },
+    noImageFill: true,
   },
   {
     id: 'scotland-island-boat',
@@ -48,5 +56,6 @@ export const draggableItemsList: Array<DraggableItemConfig> = [
     location: 'Sydney, Australia',
     imageData: VividFestivalPhoto,
     imageAlt: 'A man surfing',
+    imageStyle: { objectFit: 'cover', transform: 'scaleX(-1)' },
   },
 ];

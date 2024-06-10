@@ -3,17 +3,38 @@
 @tailwind utilities;
 
 body {
-    color: #292B36;
+  color: #292b36;
+}
+
+.draggable-list-box {
+  background: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(6, 31, 48, 0.16);
+  width: 100%;
+  max-width: 568px;
+
+  /* Ensure room to touch scroll on mobile */
+  margin: 36px;
 }
 
 .dragging-item-bg {
-    background: #F4F5F6;
+  background: #f4f5f6;
 }
 
 .location-text {
-    color: #A8A9AE;
+  color: #a8a9ae;
 }
 
 .drop-boundry-dragover-bg {
-    background: #1E9BF0;
+  background: #1e9bf0;
+}
+
+.drag-image-box {
+  background: white;
+  box-shadow: 0 8px 16px rgba(6, 31, 48, 0.08);
+  min-width: 288px;
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
