@@ -13,9 +13,6 @@ body {
   box-shadow: 0 2px 4px rgba(6, 31, 48, 0.16);
   width: 100%;
   max-width: 568px;
-
-  /* Ensure room to touch scroll on mobile */
-  margin: 36px;
 }
 
 .dragging-item-bg {

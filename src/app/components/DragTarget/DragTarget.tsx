@@ -1,97 +1,36 @@
 'use client';
 
-import { useReorderItem } from '@/contexts/draggable-list-context';
-import { useCurrentDraggingIndex } from '@/contexts/dragging-index-context';
+import { useDroppable } from '@dnd-kit/core';
 import clsx from 'clsx';
-import { DragEvent, useCallback, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 
 export interface DragTargetProps {
   index: number;
 }
 
 export default function DragTarget({ index }: DragTargetProps) {
-  const reorderItem = useReorderItem();
-  const currentDraggingIndex = useCurrentDraggingIndex();
-  const [isDraggingOver, setIsDraggingOver] = useState(false);
-
-  const isCurrentDraggingItemAdjacent = useMemo(() => {
-    return currentDraggingIndex === index || currentDraggingIndex === index - 1;
-  }, [currentDraggingIndex, index]);
-
-  const isDraggingOccurring = useMemo(() => {
-    return currentDraggingIndex >= 0;
-  }, [currentDraggingIndex]);
-
-  const shouldShowDroppableArea =
-    isDraggingOccurring && !isCurrentDraggingItemAdjacent;
-
-  const handleDragEnter = useCallback(
-    (event: DragEvent<HTMLDivElement>) => {
-      event.preventDefault();
-      event.stopPropagation();
-
-      if (!isCurrentDraggingItemAdjacent) {
-        setIsDraggingOver(true);
-      }
+  const { setNodeRef, isOver, active } = useDroppable({
+    id: `drop-zone-${index}`,
+    data: {
+      index,
     },
-    [setIsDraggingOver, isCurrentDraggingItemAdjacent]
-  );
+  });
 
-  const handleDragLeave = useCallback(
-    (event: DragEvent<HTMLDivElement>) => {
-      event.preventDefault();
-      event.stopPropagation();
+  const activeIndex = active?.data.current?.index;
 
-      setIsDraggingOver(false);
-    },
-    [setIsDraggingOver]
-  );
-
-  const handleDragOver = useCallback(
-    (event: DragEvent<HTMLDivElement>) => {
-      event.preventDefault();
-      event.stopPropagation();
-
-      if (!isCurrentDraggingItemAdjacent) {
-        event.dataTransfer.dropEffect = 'move';
-      } else {
-        event.dataTransfer.dropEffect = 'none';
-      }
-    },
-    [isCurrentDraggingItemAdjacent]
-  );
-
-  const handleDrop = useCallback(
-    (event: DragEvent<HTMLDivElement>) => {
-      event.preventDefault();
-      event.stopPropagation();
-
-      const itemId = event.dataTransfer.getData('text/plain');
-
-      if (!isCurrentDraggingItemAdjacent) {
-        reorderItem(itemId, index);
-        setIsDraggingOver(false);
-      }
-    },
-    [isCurrentDraggingItemAdjacent, index, reorderItem, setIsDraggingOver]
-  );
+  const isCurrentDraggingItemNotAdjacent = useMemo(() => {
+    if (typeof activeIndex !== 'number') {
+      return false;
+    }
+    return !(activeIndex === index || activeIndex === index - 1);
+  }, [activeIndex, index]);
 
   return (
     <div
       className={clsx('relative h-1', {
-        'drop-boundry-dragover-bg': isDraggingOver,
+        'drop-boundry-dragover-bg': isOver && isCurrentDraggingItemNotAdjacent,
       })}
-    >
-      <div
-        className={clsx(
-          'absolute inset-x-0 top-1/2 z-20 h-20 -translate-y-1/2',
-          { hidden: !shouldShowDroppableArea }
-        )}
-        onDragEnter={handleDragEnter}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-      />
-    </div>
+      ref={setNodeRef}
+    />
   );
 }

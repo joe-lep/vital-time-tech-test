@@ -3,10 +3,7 @@
 import { DraggableItemConfig } from '@/app/types';
 import DraggableItem from '../DraggableItem/DraggableItem';
 import { Fragment, useCallback, useMemo } from 'react';
-import {
-  DraggableListProvider,
-  useListOrder,
-} from '@/contexts/draggable-list-context';
+import { useListOrder } from '@/app/components/DragProviders';
 import DragTarget from '../DragTarget';
 import { DraggableItemListProps } from './propsDefinition';
 
@@ -14,8 +11,6 @@ export default function DraggableItemListInner({
   config,
 }: DraggableItemListProps) {
   const listOrder = useListOrder();
-
-  console.log(listOrder);
 
   const compareFunction = useCallback(
     (a: DraggableItemConfig, b: DraggableItemConfig) => {

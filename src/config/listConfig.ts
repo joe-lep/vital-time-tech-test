@@ -34,6 +34,13 @@ export const draggableItemsList: Array<DraggableItemConfig> = [
       objectFit: 'cover',
       top: '-9.6px',
     },
+    imageStyleSmall: {
+      position: 'absolute',
+      width: '74.43px',
+      height: '56.03px',
+      objectFit: 'cover',
+      top: '-3.2px',
+    },
     noImageFill: true,
   },
   {

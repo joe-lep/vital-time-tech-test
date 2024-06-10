@@ -8,6 +8,7 @@ export type DraggableItemConfig = {
   imageAlt: string;
   imageData: StaticImageData;
   imageStyle?: CSSProperties;
+  imageStyleSmall?: CSSProperties;
   noImageFill?: boolean;
 };
 
